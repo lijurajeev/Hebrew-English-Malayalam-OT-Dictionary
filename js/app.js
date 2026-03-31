@@ -330,7 +330,7 @@ function cacheDOMRefs() {
     wordCount:      document.getElementById('word-count'),
     visibleCount:   document.getElementById('visible-count'),
     noResultsMsg:   document.getElementById('no-results-msg'),
-    bookFilters:    document.getElementById('book-pills'),
+    bookFilter:     document.getElementById('book-filter'),
     modalOverlay:   document.getElementById('modal-overlay'),
     modalContent:   document.getElementById('modal-content'),
     modalClose:     document.getElementById('modal-close'),
@@ -369,48 +369,19 @@ function renderStatistics() {
 // Book Filter Pills
 // ---------------------------------------------------------------------------
 
-function setupBookPills() {
-  if (!dom.bookFilters) return;
+function setupBookFilter() {
+  if (!dom.bookFilter) return;
 
-  dom.bookFilters.querySelectorAll('.book-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      const bookVal = pill.dataset.book;
-      if (bookVal === 'all') {
-        state.activeBooks.clear();
-        dom.bookFilters.querySelectorAll('.book-pill').forEach(p => {
-          p.classList.remove('active');
-          p.setAttribute('aria-pressed', 'false');
-        });
-        pill.classList.add('active');
-        pill.setAttribute('aria-pressed', 'true');
-      } else {
-        const allPill = dom.bookFilters.querySelector('[data-book="all"]');
-        if (allPill) {
-          allPill.classList.remove('active');
-          allPill.setAttribute('aria-pressed', 'false');
-        }
-        const bookName = BOOK_ATTR_MAP[bookVal] || bookVal;
-        toggleBookFilter(bookName, pill);
-        return;
-      }
-      applyFilters();
-      updateURLHash();
-    });
+  dom.bookFilter.addEventListener('change', () => {
+    const bookVal = dom.bookFilter.value;
+    state.activeBooks.clear();
+    if (bookVal !== 'all') {
+      const bookName = BOOK_ATTR_MAP[bookVal] || bookVal;
+      state.activeBooks.add(bookName);
+    }
+    applyFilters();
+    updateURLHash();
   });
-}
-
-function toggleBookFilter(book, pillEl) {
-  if (state.activeBooks.has(book)) {
-    state.activeBooks.delete(book);
-    pillEl.classList.remove('active');
-    pillEl.setAttribute('aria-pressed', 'false');
-  } else {
-    state.activeBooks.add(book);
-    pillEl.classList.add('active');
-    pillEl.setAttribute('aria-pressed', 'true');
-  }
-  applyFilters();
-  updateURLHash();
 }
 
 // ---------------------------------------------------------------------------
@@ -1020,12 +991,10 @@ function handleInitialHash() {
     const book = decodeURIComponent(hash.slice(6));
     if (OT_BOOKS.includes(book)) {
       state.activeBooks.add(book);
-      if (dom.bookFilters) {
-        const pill = dom.bookFilters.querySelector(`[data-book="${CSS.escape(book)}"]`);
-        if (pill) {
-          pill.classList.add('active');
-          pill.setAttribute('aria-pressed', 'true');
-        }
+      if (dom.bookFilter) {
+        // Find the option value that maps to this book name
+        const optVal = Object.entries(BOOK_ATTR_MAP).find(([k, v]) => v === book);
+        if (optVal) dom.bookFilter.value = optVal[0];
       }
       applyFilters();
     }
@@ -1049,17 +1018,7 @@ function clearAllFilters() {
   if (dom.tagFilter)   dom.tagFilter.value   = 'all';
   if (dom.sortSelect)  dom.sortSelect.value  = 'appearance';
 
-  if (dom.bookFilters) {
-    dom.bookFilters.querySelectorAll('.book-pill').forEach(p => {
-      p.classList.remove('active');
-      p.setAttribute('aria-pressed', 'false');
-    });
-    const allPill = dom.bookFilters.querySelector('[data-book="all"]');
-    if (allPill) {
-      allPill.classList.add('active');
-      allPill.setAttribute('aria-pressed', 'true');
-    }
-  }
+  if (dom.bookFilter) dom.bookFilter.value = 'all';
 
   history.replaceState(null, '', window.location.pathname);
   applyFilters();
@@ -1159,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   state.allData = sortData(DICTIONARY_DATA.slice());
   state.filtered = state.allData.slice();
 
-  setupBookPills();
+  setupBookFilter();
   populateTagFilter();
 
   setupAnimationObserver();

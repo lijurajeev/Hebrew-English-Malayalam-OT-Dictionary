@@ -151,54 +151,56 @@
     <section class="filter-bar" id="filter-bar" aria-label="Filter and sort options">
       <div class="filter-bar-inner container">
 
-        <!-- Book Filter Pills (horizontal scroll) -->
-        <div class="filter-group filter-group--books" role="group" aria-label="Filter by OT book">
-          <div class="book-pills-scroll" id="book-pills" role="list">
-            <button class="book-pill active" data-book="all" role="listitem" type="button" aria-pressed="true">All</button>
-            <button class="book-pill" data-book="genesis" role="listitem" type="button" aria-pressed="false">Genesis</button>
-            <button class="book-pill" data-book="exodus" role="listitem" type="button" aria-pressed="false">Exodus</button>
-            <button class="book-pill" data-book="leviticus" role="listitem" type="button" aria-pressed="false">Leviticus</button>
-            <button class="book-pill" data-book="numbers" role="listitem" type="button" aria-pressed="false">Numbers</button>
-            <button class="book-pill" data-book="deuteronomy" role="listitem" type="button" aria-pressed="false">Deuteronomy</button>
-            <button class="book-pill" data-book="joshua" role="listitem" type="button" aria-pressed="false">Joshua</button>
-            <button class="book-pill" data-book="judges" role="listitem" type="button" aria-pressed="false">Judges</button>
-            <button class="book-pill" data-book="ruth" role="listitem" type="button" aria-pressed="false">Ruth</button>
-            <button class="book-pill" data-book="1samuel" role="listitem" type="button" aria-pressed="false">1 Sam</button>
-            <button class="book-pill" data-book="2samuel" role="listitem" type="button" aria-pressed="false">2 Sam</button>
-            <button class="book-pill" data-book="1kings" role="listitem" type="button" aria-pressed="false">1 Kings</button>
-            <button class="book-pill" data-book="2kings" role="listitem" type="button" aria-pressed="false">2 Kings</button>
-            <button class="book-pill" data-book="1chronicles" role="listitem" type="button" aria-pressed="false">1 Chr</button>
-            <button class="book-pill" data-book="2chronicles" role="listitem" type="button" aria-pressed="false">2 Chr</button>
-            <button class="book-pill" data-book="ezra" role="listitem" type="button" aria-pressed="false">Ezra</button>
-            <button class="book-pill" data-book="nehemiah" role="listitem" type="button" aria-pressed="false">Nehemiah</button>
-            <button class="book-pill" data-book="esther" role="listitem" type="button" aria-pressed="false">Esther</button>
-            <button class="book-pill" data-book="job" role="listitem" type="button" aria-pressed="false">Job</button>
-            <button class="book-pill" data-book="psalms" role="listitem" type="button" aria-pressed="false">Psalms</button>
-            <button class="book-pill" data-book="proverbs" role="listitem" type="button" aria-pressed="false">Proverbs</button>
-            <button class="book-pill" data-book="ecclesiastes" role="listitem" type="button" aria-pressed="false">Eccl</button>
-            <button class="book-pill" data-book="songofsolomon" role="listitem" type="button" aria-pressed="false">Song</button>
-            <button class="book-pill" data-book="isaiah" role="listitem" type="button" aria-pressed="false">Isaiah</button>
-            <button class="book-pill" data-book="jeremiah" role="listitem" type="button" aria-pressed="false">Jeremiah</button>
-            <button class="book-pill" data-book="lamentations" role="listitem" type="button" aria-pressed="false">Lam</button>
-            <button class="book-pill" data-book="ezekiel" role="listitem" type="button" aria-pressed="false">Ezekiel</button>
-            <button class="book-pill" data-book="daniel" role="listitem" type="button" aria-pressed="false">Daniel</button>
-            <button class="book-pill" data-book="hosea" role="listitem" type="button" aria-pressed="false">Hosea</button>
-            <button class="book-pill" data-book="joel" role="listitem" type="button" aria-pressed="false">Joel</button>
-            <button class="book-pill" data-book="amos" role="listitem" type="button" aria-pressed="false">Amos</button>
-            <button class="book-pill" data-book="obadiah" role="listitem" type="button" aria-pressed="false">Obadiah</button>
-            <button class="book-pill" data-book="jonah" role="listitem" type="button" aria-pressed="false">Jonah</button>
-            <button class="book-pill" data-book="micah" role="listitem" type="button" aria-pressed="false">Micah</button>
-            <button class="book-pill" data-book="nahum" role="listitem" type="button" aria-pressed="false">Nahum</button>
-            <button class="book-pill" data-book="habakkuk" role="listitem" type="button" aria-pressed="false">Habakkuk</button>
-            <button class="book-pill" data-book="zephaniah" role="listitem" type="button" aria-pressed="false">Zephaniah</button>
-            <button class="book-pill" data-book="haggai" role="listitem" type="button" aria-pressed="false">Haggai</button>
-            <button class="book-pill" data-book="zechariah" role="listitem" type="button" aria-pressed="false">Zechariah</button>
-            <button class="book-pill" data-book="malachi" role="listitem" type="button" aria-pressed="false">Malachi</button>
-          </div>
-        </div>
-
         <!-- Dropdowns + Sort + Clear -->
         <div class="filter-controls">
+          <!-- Book Filter -->
+          <div class="filter-select-wrap">
+            <label for="book-filter" class="sr-only">Filter by book</label>
+            <select id="book-filter" class="filter-select" aria-label="Filter by OT book">
+              <option value="all">All Books</option>
+              <option value="genesis">Genesis</option>
+              <option value="exodus">Exodus</option>
+              <option value="leviticus">Leviticus</option>
+              <option value="numbers">Numbers</option>
+              <option value="deuteronomy">Deuteronomy</option>
+              <option value="joshua">Joshua</option>
+              <option value="judges">Judges</option>
+              <option value="ruth">Ruth</option>
+              <option value="1samuel">1 Samuel</option>
+              <option value="2samuel">2 Samuel</option>
+              <option value="1kings">1 Kings</option>
+              <option value="2kings">2 Kings</option>
+              <option value="1chronicles">1 Chronicles</option>
+              <option value="2chronicles">2 Chronicles</option>
+              <option value="ezra">Ezra</option>
+              <option value="nehemiah">Nehemiah</option>
+              <option value="esther">Esther</option>
+              <option value="job">Job</option>
+              <option value="psalms">Psalms</option>
+              <option value="proverbs">Proverbs</option>
+              <option value="ecclesiastes">Ecclesiastes</option>
+              <option value="songofsolomon">Song of Solomon</option>
+              <option value="isaiah">Isaiah</option>
+              <option value="jeremiah">Jeremiah</option>
+              <option value="lamentations">Lamentations</option>
+              <option value="ezekiel">Ezekiel</option>
+              <option value="daniel">Daniel</option>
+              <option value="hosea">Hosea</option>
+              <option value="joel">Joel</option>
+              <option value="amos">Amos</option>
+              <option value="obadiah">Obadiah</option>
+              <option value="jonah">Jonah</option>
+              <option value="micah">Micah</option>
+              <option value="nahum">Nahum</option>
+              <option value="habakkuk">Habakkuk</option>
+              <option value="zephaniah">Zephaniah</option>
+              <option value="haggai">Haggai</option>
+              <option value="zechariah">Zechariah</option>
+              <option value="malachi">Malachi</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-arrow" aria-hidden="true"></i>
+          </div>
+
           <!-- Part of Speech -->
           <div class="filter-select-wrap">
             <label for="pos-filter" class="sr-only">Filter by part of speech</label>
@@ -719,8 +721,8 @@
   <!-- ===================================================
        SCRIPTS
   ==================================================== -->
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/data.js?v=2"></script>
+  <script src="js/app.js?v=2"></script>
 
 </body>
 </html>
