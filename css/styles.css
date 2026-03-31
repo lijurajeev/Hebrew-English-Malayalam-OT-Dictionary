@@ -302,9 +302,9 @@ ul { list-style: none; }
 
 #book-pills {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding-bottom: 4px;
-  width: max-content;
 }
 .book-pill {
   padding: 6px 14px;
