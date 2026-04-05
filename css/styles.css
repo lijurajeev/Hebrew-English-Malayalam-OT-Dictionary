@@ -188,9 +188,9 @@ ul { list-style: none; }
   margin-right: auto;
 }
 .hero p.hero-description {
-  font-size: 0.75rem;
-  line-height: 1.45;
-  margin-bottom: 10px;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  margin-bottom: 8px;
 }
 
 /* BETA Badge */
@@ -215,17 +215,17 @@ ul { list-style: none; }
   background: #e8f0fe;
   border: 1px solid #c5d7f7;
   border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 0.72rem;
+  padding: 5px 10px;
+  font-size: 0.62rem;
   max-width: 440px;
-  margin: 8px auto 0;
+  margin: 6px auto 0;
 }
 .dark-mode .audio-tip-inline {
   background: #1e293b;
   border-color: #334155;
 }
 .audio-tip-icon {
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #0078d4;
 }
 
