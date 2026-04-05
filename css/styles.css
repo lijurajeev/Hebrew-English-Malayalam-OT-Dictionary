@@ -172,15 +172,17 @@ ul { list-style: none; }
 .hero-hebrew {
   display: block;
   font-size: 1.1rem;
-  margin-bottom: 2px;
+  margin-bottom: 0;
+  line-height: 1.2;
 }
 .hero-heading {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+  line-height: 1.1;
 }
 .hero-heading-main {
   font-size: 1.4rem;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 .hero h2 {
   font-size: 2.2rem;
