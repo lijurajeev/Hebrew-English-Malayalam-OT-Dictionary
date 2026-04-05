@@ -34,7 +34,7 @@
   />
 
   <!-- App Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=2" />
 </head>
 
 <body>
@@ -48,6 +48,7 @@
         <a href="#" class="brand-link" aria-label="Home">
           <i class="fa-solid fa-scroll brand-icon" aria-hidden="true"></i>
           <span class="brand-title">Hebrew OT Dictionary</span>
+          <span class="beta-badge">BETA</span>
         </a>
       </div>
 
@@ -119,6 +120,10 @@
             <span lang="ml">മലയാളം</span> (Malayalam) translations — an
             invaluable resource for Bible study students.
           </p>
+          <div class="audio-tip-inline">
+            <i class="fa-brands fa-windows audio-tip-icon" aria-hidden="true"></i>
+            <span>For Hebrew audio, add the Hebrew language pack in Windows Settings.</span>
+          </div>
         </div>
 
         <!-- Search Bar -->
@@ -711,6 +716,14 @@
         </div>
       </div>
       <div class="footer-divider"></div>
+      <div class="footer-beta">
+        <p class="footer-beta-text">
+          <span class="beta-badge">BETA</span>
+          This app is in beta. Found a bug or have feedback?
+          <button id="footer-feedback-btn" type="button">Let us know</button> — we'd love to hear from you!
+        </p>
+      </div>
+      <div class="footer-divider"></div>
       <div class="footer-bottom">
         <p class="footer-source">Based on the <em>Masoretic Hebrew Old Testament</em></p>
         <p class="footer-copyright">&copy; 2025 Biblical Hebrew OT Dictionary</p>
@@ -719,10 +732,48 @@
   </footer>
 
   <!-- ===================================================
+       FEEDBACK FAB
+  ==================================================== -->
+  <button id="feedback-fab" type="button" aria-label="Send feedback">
+    <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+  </button>
+
+  <!-- ===================================================
+       FEEDBACK MODAL
+  ==================================================== -->
+  <div id="feedback-overlay" role="dialog" aria-label="Send feedback" aria-hidden="true">
+    <div class="feedback-modal">
+      <div class="feedback-header">
+        <h3>Send Feedback</h3>
+        <button class="feedback-close" id="feedback-close" type="button" aria-label="Close feedback">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="feedback-body">
+        <div class="feedback-types">
+          <button class="feedback-type-btn active" data-type="Bug" type="button">
+            <i class="fa-solid fa-bug" aria-hidden="true"></i> Bug
+          </button>
+          <button class="feedback-type-btn" data-type="Feature" type="button">
+            <i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Feature
+          </button>
+          <button class="feedback-type-btn" data-type="General" type="button">
+            <i class="fa-solid fa-message" aria-hidden="true"></i> General
+          </button>
+        </div>
+        <textarea class="feedback-textarea" id="feedback-message" placeholder="Describe the issue or suggestion…"></textarea>
+        <button class="feedback-submit" id="feedback-submit" type="button">
+          <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Feedback
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================
        SCRIPTS
   ==================================================== -->
-  <script src="js/data.js?v=2"></script>
-  <script src="js/app.js?v=2"></script>
+  <script src="js/data.js?v=3"></script>
+  <script src="js/app.js?v=3"></script>
 
 </body>
 </html>

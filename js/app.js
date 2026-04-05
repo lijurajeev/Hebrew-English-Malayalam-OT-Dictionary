@@ -1135,4 +1135,71 @@ document.addEventListener('DOMContentLoaded', () => {
       handleInitialHash();
     });
   });
+
+  // Feedback modal
+  setupFeedbackModal();
 });
+
+// ---------------------------------------------------------------------------
+// Feedback Modal
+// ---------------------------------------------------------------------------
+
+function setupFeedbackModal() {
+  const overlay = document.getElementById('feedback-overlay');
+  const fab = document.getElementById('feedback-fab');
+  const closeBtn = document.getElementById('feedback-close');
+  const submitBtn = document.getElementById('feedback-submit');
+  const footerBtn = document.getElementById('footer-feedback-btn');
+  const typeBtns = document.querySelectorAll('.feedback-type-btn');
+  const textarea = document.getElementById('feedback-message');
+
+  if (!overlay) return;
+
+  let selectedType = 'Bug';
+
+  function openFeedback() {
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    if (textarea) textarea.focus();
+  }
+
+  function closeFeedback() {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  if (fab) fab.addEventListener('click', openFeedback);
+  if (footerBtn) footerBtn.addEventListener('click', openFeedback);
+  if (closeBtn) closeBtn.addEventListener('click', closeFeedback);
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeFeedback();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closeFeedback();
+    }
+  });
+
+  typeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      typeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedType = btn.dataset.type;
+    });
+  });
+
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      const message = textarea ? textarea.value.trim() : '';
+      const subject = encodeURIComponent(`[Hebrew OT Dictionary] ${selectedType}`);
+      const body = encodeURIComponent(
+        `Type: ${selectedType}\n\nMessage:\n${message}\n\n---\nPage: ${window.location.href}\nUser Agent: ${navigator.userAgent}`
+      );
+      window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
+      closeFeedback();
+      if (textarea) textarea.value = '';
+    });
+  }
+}
