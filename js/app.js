@@ -1150,10 +1150,12 @@ function setupAudioTip() {
   const closeBtn = document.getElementById('audio-tip-close');
   if (!tip || !closeBtn) return;
 
-  if (localStorage.getItem('audioTipDismissed') === 'true') {
-    tip.style.display = 'none';
+  const isWindows = navigator.userAgent.indexOf('Windows') !== -1;
+  if (!isWindows || localStorage.getItem('audioTipDismissed') === 'true') {
     return;
   }
+
+  tip.style.display = 'flex';
 
   closeBtn.addEventListener('click', () => {
     tip.style.display = 'none';
