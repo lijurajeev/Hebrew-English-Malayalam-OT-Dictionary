@@ -1120,6 +1120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupBookFilter();
   populateTagFilter();
+  setupAudioTip();
 
   setupAnimationObserver();
 
@@ -1143,6 +1144,22 @@ document.addEventListener('DOMContentLoaded', () => {
 // ---------------------------------------------------------------------------
 // Feedback Modal
 // ---------------------------------------------------------------------------
+
+function setupAudioTip() {
+  const tip = document.getElementById('audio-tip');
+  const closeBtn = document.getElementById('audio-tip-close');
+  if (!tip || !closeBtn) return;
+
+  if (localStorage.getItem('audioTipDismissed') === 'true') {
+    tip.style.display = 'none';
+    return;
+  }
+
+  closeBtn.addEventListener('click', () => {
+    tip.style.display = 'none';
+    localStorage.setItem('audioTipDismissed', 'true');
+  });
+}
 
 function setupFeedbackModal() {
   const overlay = document.getElementById('feedback-overlay');

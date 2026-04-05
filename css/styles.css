@@ -244,6 +244,19 @@ ul { list-style: none; }
   font-size: 0.85rem;
   color: #0078d4;
 }
+.audio-tip-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.audio-tip-close:hover { opacity: 1; }
 
 /* Stats bar */
 .stats-bar {
