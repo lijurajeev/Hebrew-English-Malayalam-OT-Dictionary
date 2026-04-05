@@ -1197,7 +1197,7 @@ function setupFeedbackModal() {
       const body = encodeURIComponent(
         `Type: ${selectedType}\n\nMessage:\n${message}\n\n---\nPage: ${window.location.href}\nUser Agent: ${navigator.userAgent}`
       );
-      window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:lijurajeev@gmail.com?subject=${subject}&body=${body}`;
       closeFeedback();
       if (textarea) textarea.value = '';
     });
